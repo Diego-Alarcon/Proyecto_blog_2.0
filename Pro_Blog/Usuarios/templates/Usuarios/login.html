@@ -10,12 +10,14 @@
             </fieldset>
             <div class="form-group">
                 <button class="btn btn-outline-info" type="submit">Iniciar Sesion</button>
-
+                <small class="text-muted ml-2">
+                    <a href="{% url 'password_reset' %}">¿Olvido su Contraseña?</a>
+                </small>
             </div>
         </form>
         <div class="border-top pt-3">
             <small class="text-muted">
-                No tienes una Cuenta? <a class="ml-2" href="{% url 'register' %}">Registrate</a>
+                ¿No tienes una Cuenta? <a class="ml-2" href="{% url 'register' %}">Registrate</a>
             </small>
         </div>
     </div>
