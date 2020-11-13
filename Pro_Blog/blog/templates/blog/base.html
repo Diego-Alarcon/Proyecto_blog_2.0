@@ -49,6 +49,10 @@
                         <a class="nav-item nav-link" href="{% url 'login' %}">Iniciar Sesion</a>
                         <a class="nav-item nav-link" href="{% url 'register' %}">Registrarse</a>
                         {% endif %}
+
+                        {% if user.is_superuser %}
+                        <a class="nav-item nav-link" target="_blank" href="{% url 'admin:index' %}">Admin</a>
+                        {% endif %}
                     </div>
                 </div>
             </div>
