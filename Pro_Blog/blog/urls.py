@@ -1,6 +1,9 @@
 from django.urls import path
 from .views import (PostListView, PostDetailView, PostCreateView, PostUpdateView, PostDeleteView, UserPostListView)
 from . import views
+from rest_framework.urlpatterns import format_suffix_patterns
+from blog import views
+
 
 urlpatterns = [
     path('', PostListView.as_view(), name='blog-home'),
@@ -10,5 +13,9 @@ urlpatterns = [
     path('post/<int:pk>/update/', PostUpdateView.as_view(), name='post-update'),
     path('post/<int:pk>/delete/', PostDeleteView.as_view(), name='post-delete'),
     path('inicio/', views.about, name='blog-inicio'),
+    path('posts/', views.post_collection, name='Todos los posts!'),
+    path('posts/<int:pk>/', views.post_element, name='Post Requerido!'),
+
 
 ]
+urlpatterns = format_suffix_patterns(urlpatterns)

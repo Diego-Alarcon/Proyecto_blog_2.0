@@ -13,6 +13,10 @@
                 <small class="text-muted ml-2">
                     <a href="{% url 'password_reset' %}">¿Olvido su Contraseña?</a>
                 </small>
+                <small class="text-muted ml-2">
+                <a href="{% url 'social:begin' 'facebook' %}?next={{ request.path }}">Conectese con Facebook</a>
+                </small>
+                
             </div>
         </form>
         <div class="border-top pt-3">

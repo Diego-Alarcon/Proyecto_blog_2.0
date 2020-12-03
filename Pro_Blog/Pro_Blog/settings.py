@@ -41,7 +41,13 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
+    'social_django',  
+    'social.apps.django_app.default',
+    'pwa',
 ]
+
+
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -51,6 +57,7 @@ MIDDLEWARE = [
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
     'django.middleware.clickjacking.XFrameOptionsMiddleware',
+    'social_django.middleware.SocialAuthExceptionMiddleware', 
 ]
 
 ROOT_URLCONF = 'Pro_Blog.urls'
@@ -66,6 +73,9 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
+                'social_django.context_processors.backends',
+                'social_django.context_processors.login_redirect',
+
             ],
         },
     },
@@ -142,5 +152,36 @@ EMAIL_PORT = 587
 EMAIL_USE_TLS = True 
 EMAIL_HOST_USER = 'diegojara277@gmail.com'
 EMAIL_HOST_PASSWORD = 'pinguino5099'
+
+#-----------------FACEBOOK AUTH
+AUTHENTICATION_BACKENDS = [
+                'social.backends.facebook.FacebookAppOAuth2',
+                'social.backends.facebook.FacebookOAuth2',
+                'django.contrib.auth.backends.ModelBackend',
+                'social_core.backends.facebook.FacebookOAuth2',
+]
+SOCIAL_AUTH_LOGIN_REDIRECT_URL = 'login'
+
+
+SOCIAL_AUTH_FACEBOOK_KEY = '1029353250810218'
+SOCIAL_AUTH_FACEBOOK_SECRET = '4f5bc31ea401dc0bf0ab0c3a9ddd382e'
+
+# PWA
+PWA_SERVICE_WORKER_PATH = os.path.join(BASE_DIR, 'blog/static/blog', 'serviceworker.js')
+PWA_APP_NAME = 'Blog De Futbol 3.0'
+PWA_APP_DESCRIPTION = 'Post Futbol!'
+PWA_APP_THEME_COLOR = ' #0c2d44'
+PWA_APP_BACKGROUND_COLOR = '#fff'
+PWA_APP_ICONS = [
+    {
+        'src': 'media/pelota.png',
+        'sizes': '512x512'
+    
+    }
+]
+
+
+
+
 
 
